@@ -1,9 +1,39 @@
-import React from "react";
 import ReactDOM from "react-dom";
+import Routes from "./routes";
+import Relay from "react-relay";
+import useRelay from "react-router-relay";
+import { RelayNetworkLayer, urlMiddleware } from "react-relay-network-layer";
+import { relayApi } from "./config/endpoints";
+import auth from "./utils/auth";
 
-ReactDOM.render(
-  <div>
-    <h1>Hello World!</h1>
-  </div>,
-  document.getElementById("root")
-);
+// const createHeaders = () => {
+//   let idToken = auth.getToken();
+
+//   if (idToken) {
+//     return {
+//       Authorization: `Bearer ${idToken}`
+//     };
+//   } else {
+//     return {};
+//   }
+// };
+
+// Relay.injectNetworkLayer(
+//   new RelayNetworkLayer(
+//     [
+//       urlMiddleware({
+//         url: req => relayApi
+//       }),
+//       next => req => {
+//         req.headers = {
+//           ...req.headers,
+//           ...createHeaders()
+//         };
+//         return next(req);
+//       }
+//     ],
+//     { disableBatchQuery: true }
+//   )
+// );
+
+ReactDOM.render(Routes, document.getElementById("root"));
